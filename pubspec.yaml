@@ -1,0 +1,78 @@
+name: app
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.3 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_svg: ^2.0.5
+  cupertino_icons: ^1.0.2
+  dio: ^5.4.0
+  # retrofit: ">=4.0.0 <5.0.0"
+  firebase_core:
+  firebase_auth:
+  # equatable:
+  # flutter_bloc:
+  email_validator:
+  provider: ^6.1.1
+  carousel_slider: ^4.2.1
+  http: ^1.1.2
+  cached_network_image: ^3.3.1
+  flutter_staggered_grid_view: ^0.7.0
+  # awesome_dio_interceptor: ^1.0.0
+  # get_it:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  # retrofit_generator: ">=5.0.0 <6.0.0"
+  build_runner: ^2.4.7
+  flutter_gen_runner:
+
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+  line_length: 80 # Optional (default: 80)
+
+  # Optional
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/AuthBack.png
+    - assets/images/AvatarAuth.png
+    - assets/icons/ArrowBackToScreen.png
+    - assets/icons/UnionBottom.svg
+    - assets/icons/UnionTop.svg
+    - assets/icons/chat.svg
+    - assets/icons/house.svg
+    - assets/icons/magnify.svg
+    - assets/icons/person.svg
+
+  fonts:
+    - family: Comfortaa
+      fonts:
+        - asset: assets/fonts/Comfortaa-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Black.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
