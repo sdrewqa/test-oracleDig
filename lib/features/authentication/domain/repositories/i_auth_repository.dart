@@ -7,5 +7,5 @@ abstract class IAuthRepository {
     String password,
   );
   Future<void> signOut();
-
+  
 }

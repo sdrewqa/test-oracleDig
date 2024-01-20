@@ -1,4 +1,4 @@
-import 'package:app/core/common/widgets/custom_textfield_widget.dart';
+import 'package:app/common/widgets/custom_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers(view-model)/search_provider.dart';

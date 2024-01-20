@@ -53,4 +53,8 @@ class ProfileProvider extends ChangeNotifier {
       throw (e);
     }
   }
+
+  Never DS() {
+    throw ('dsa');
+  }
 }

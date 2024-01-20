@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // VIEW MODEL provider
 class AuthenticationProvider extends ChangeNotifier {
   final AuthRepository _authRepository = AuthRepository();
+  // ignore: unused_field
   User? _currentUser;
   // User? get currentUser => _currentUser;
   bool isLoading = false;

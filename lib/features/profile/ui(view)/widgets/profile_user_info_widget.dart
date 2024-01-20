@@ -1,12 +1,13 @@
-import 'package:app/core/common/widgets/custom_button_widget.dart';
+import 'package:app/common/widgets/custom_button_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers(view-model)/profile_provider.dart';
 
 class ProfielUserInfoWidget extends StatelessWidget {
-  ProfielUserInfoWidget({super.key});
+   final bool isMyProfile;
+  ProfielUserInfoWidget({super.key, required this.isMyProfile});
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<ProfileProvider>(context, listen: false);
@@ -34,7 +35,7 @@ class ProfielUserInfoWidget extends StatelessWidget {
                     //   size: 80,
                     // ),
                   )
-                : Icon(
+                : const Icon(
                     Icons.person,
                     size: 80,
                   ),

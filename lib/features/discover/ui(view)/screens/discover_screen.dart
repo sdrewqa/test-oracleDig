@@ -1,4 +1,4 @@
-import 'package:app/core/common/widgets/custom_button_widget.dart';
+import 'package:app/common/widgets/custom_button_widget.dart';
 import 'package:app/features/discover/providers(view-model)/discover_provider.dart';
 import 'package:app/features/discover/ui(view)/widgets/discover_browse_data_widget.dart';
 import 'package:app/features/discover/ui(view)/widgets/discover_slider_widget.dart';

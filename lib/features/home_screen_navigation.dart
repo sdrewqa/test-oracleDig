@@ -7,6 +7,8 @@ import 'package:app/features/search/ui(view)/screens/search_screen.dart';
 import 'package:app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
+import '../common/widgets/my_bottom_nav_bar_widget.dart';
+
 class HomeNavigation extends StatefulWidget {
   const HomeNavigation({super.key});
 
@@ -21,7 +23,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: _buildBody(),
-      bottomNavigationBar: MyBottomNavigationBar(
+      bottomNavigationBar: MyBottomNavigationBarWidget(
         currentIndex: _currentIndex,
         onTabSelected: (index) {
           setState(() {
@@ -39,138 +41,13 @@ class _HomeNavigationState extends State<HomeNavigation> {
       case 1:
         return const SearchScreen();
       case 2:
-        return SearchScreen();
+        return Container();
       case 3:
         return const ChatsScreen();
       case 4:
-        return const ProfileScreen();
+        return const ProfileScreen(isMyProfile: true);
       default:
-        return const ProfileScreen();
+        return const ProfileScreen(isMyProfile: true);
     }
-  }
-}
-
-class MyBottomNavigationBar extends StatelessWidget {
-  final int currentIndex;
-  final ValueChanged<int> onTabSelected;
-
-  const MyBottomNavigationBar(
-      {super.key, required this.currentIndex, required this.onTabSelected});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      bottom: false,
-      child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                  width: 0.5,
-                  color:
-                      Color.fromARGB(71, 0, 0, 0)), // Добавление полосы сверху
-            ),
-          ),
-          height: 86,
-          child: BottomNavigationBar(
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            currentIndex: currentIndex,
-            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-            onTap: onTabSelected,
-            selectedLabelStyle:
-                const TextStyle(fontWeight: FontWeight.w100, fontSize: 0),
-            type: BottomNavigationBarType.fixed,
-            items: [
-              _buildNavItem(
-                currentIndex,
-                Assets.icons.house.svg(),
-              ),
-              _buildNavItem(
-                currentIndex,
-                Assets.icons.magnify.svg(),
-              ),
-              BottomNavigationBarItem(
-                label: '',
-                icon: Container(
-                  margin: const EdgeInsets.only(top: 9),
-                  height: 40,
-                  width: 70,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color.fromRGBO(255, 0, 214, 10),
-                        Color.fromRGBO(255, 77, 0, 10),
-                      ],
-                      transform: GradientRotation(33 * 30 / 180),
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(255, 255, 255, 255),
-                        backgroundColor: const Color.fromARGB(0, 199, 0, 0),
-                        elevation: 0,
-                      ),
-                      onPressed: () {
-                        showDialog<void>(
-                          context: context,
-                          barrierDismissible: false, // user must tap button!
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('LOGOUT?'),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: const Text('NO'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                TextButton(
-                                  child: const Text('Yes'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    Navigator.pushReplacementNamed(context,
-                                        AuthOnBoardingScreen.routeName);
-                                    var logOut = AuthRepository();
-                                    logOut.signOut();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                      child: const Icon(Icons.add)),
-                ),
-              ),
-              _buildNavItem(
-                currentIndex,
-                Assets.icons.chat.svg(),
-              ),
-              _buildNavItem(
-                currentIndex,
-                Assets.icons.person.svg(),
-              ),
-            ],
-          )),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(
-    int index,
-    iconData,
-  ) {
-    return BottomNavigationBarItem(
-      icon: Container(
-          margin: const EdgeInsets.only(top: 11),
-          padding: const EdgeInsets.all(11),
-          height: 40,
-          width: 40,
-          child: iconData),
-      label: '',
-    );
   }
 }

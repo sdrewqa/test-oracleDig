@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/common/widgets/custom_button_widget.dart';
-import '../../../../core/common/widgets/discover_image_widget.dart';
+import '../../../../common/widgets/custom_button_widget.dart';
+import '../../../../common/widgets/discover_image_widget.dart';
 import '../../providers(view-model)/profile_provider.dart';
 
 class ProfileUserAlbumWidget extends StatelessWidget {
-  const ProfileUserAlbumWidget({super.key});
+   ProfileUserAlbumWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     var providerT = Provider.of<ProfileProvider>(context, listen: true);
     var provider = Provider.of<ProfileProvider>(context, listen: false);
+
     return Column(children: [
       Row(
         children: [
@@ -22,7 +23,7 @@ class ProfileUserAlbumWidget extends StatelessWidget {
           buildImageColumn(providerT.leftImages, true)
         ],
       ),
-      SizedBox(
+      const SizedBox(
         height: 22,
       ),
       CustomButtonWidget(
@@ -31,7 +32,7 @@ class ProfileUserAlbumWidget extends StatelessWidget {
           buttonOnPressed: () {
             provider.fetchPhotos(2, 6, providerT.start += 6, true);
           }),
-      SizedBox(
+      const SizedBox(
         height: 32,
       )
     ]);
@@ -53,9 +54,6 @@ class ProfileUserAlbumWidget extends StatelessWidget {
                       : index % 3 == 0
                           ? 220
                           : 310,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
                   child: ImageWidget(
                     imageUrl: listOfPhotos[index].url,
                   ),

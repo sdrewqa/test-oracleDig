@@ -1,9 +1,10 @@
+import 'dart:io' show Platform;
 import 'package:app/features/authentication/ui(view)/widgets/auth_userinfo_widget.dart';
 import 'package:app/features/authentication/providers(view-model)/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/common/widgets/custom_button_widget.dart';
+import '../../../../common/widgets/custom_button_widget.dart';
 
 class AuthOnBoardingScreen extends StatelessWidget {
   const AuthOnBoardingScreen({super.key});
@@ -56,7 +57,7 @@ class AuthOnBoardingScreen extends StatelessWidget {
               )),
               Container(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
-                height: 105,
+                height: Platform.isAndroid ? 92 : 102,
                 width: MediaQuery.of(context).size.width,
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Row(
