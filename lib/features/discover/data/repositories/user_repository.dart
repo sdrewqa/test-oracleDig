@@ -1,25 +1,17 @@
 import 'dart:convert';
 import 'package:app/constants/app_constants.dart';
+import 'package:app/features/discover/data/data_sources/remote/user_data_source.dart';
 import 'package:app/features/discover/data/models/user_response_model.dart';
 import 'package:app/features/discover/domain/entities/user_response.dart';
 import 'package:app/features/discover/domain/repositories/i_user_repository.dart';
 import 'package:http/http.dart' as http;
 
-class UserRepository implements IUserRepository {
+class UserRepositoryImpl implements IUserRepository {
+  final UserDataSource _api = UserDataSource();
   @override
   Future<UserResponseModel> fetchUser(int userId) async {
     try {
-      final response = await http
-          .get(Uri.parse('${AppConstants.baseUrl}${AppConstants.users} id'));//поменяй url
-
-      if (response.statusCode == 200) {
-        final UserResponseModel userResponse = UserResponseModel.fromJson(
-            jsonDecode(response.body)); // не уверен нужно ли
-
-        return userResponse;
-      } else {
-        throw Exception('Failed to load User from the internet');
-      }
+      return _api.fetchUser(userId);
     } catch (e) {
       throw Exception(e);
     }

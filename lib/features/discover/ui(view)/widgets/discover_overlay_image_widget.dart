@@ -12,7 +12,7 @@ class DiscoverOverlayImageWidget extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           CachedNetworkImage(
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             imageUrl: imageUrl,
@@ -25,7 +25,7 @@ class DiscoverOverlayImageWidget extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: [
                   Color.fromARGB(255, 0, 0, 0),
-                  Color.fromARGB(0, 255, 255, 0),
+                  Color.fromARGB(0, 0, 0, 0),
                 ],
               ),
             ),

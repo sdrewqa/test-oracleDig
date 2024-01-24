@@ -1,28 +1,20 @@
 import 'dart:convert';
+import 'package:app/features/discover/data/data_sources/remote/album_photos_data_source.dart';
 import 'package:app/features/discover/domain/entities/photos_response.dart';
 import 'package:app/features/discover/domain/repositories/i_album_photo_repository.dart';
 import 'package:http/http.dart' as http;
 import '../../../../constants/app_constants.dart';
 import '../../domain/entities/album_response.dart';
+import '../models/photos_response.dart';
 
-class AlbumPhotoRepository implements IAlbumePhotoRepository {
+class AlbumPhotoRepositoryImpl implements IAlbumePhotoRepository {
   //TODO нужно сделать фильтр по дате и брать только сегодняшние фото друзей
   @override
-  Future<List<UserPhotosResponseEntity>> fetchAlbumsPhotos(
+  Future<List<UserPhotosResponseModel>> fetchAlbumsPhotos(
       int albumId, int limit, int start) async {
+    final AlbumPhotosDataSource _api = AlbumPhotosDataSource();
     try {
-      final response = await http.get(Uri.parse(
-          '${AppConstants.baseUrl}${AppConstants.photosPath}?_start=$start&_limit=$limit'));
-      if (response.statusCode == 200) {
-        PhotosListResponseEntity yourEntityList =
-            PhotosListResponseEntity.fromJson(jsonDecode(response.body));
-
-        // Получение списка сущностей
-        List<UserPhotosResponseEntity> entities = yourEntityList.entities;
-        return entities;
-      } else {
-        throw Exception('Failed to load Photos from the internet');
-      }
+      return _api.fetchAlbumsPhotos(albumId, limit, start);
     } catch (e) {
       throw Exception(e);
     }

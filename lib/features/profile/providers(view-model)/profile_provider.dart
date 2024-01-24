@@ -1,9 +1,8 @@
 import 'package:app/features/profile/data/repositories/profile_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import '../../discover/data/models/photos_response.dart';
 import '../../discover/data/repositories/album_photo_repository.dart';
-import '../../discover/domain/entities/photos_response.dart';
 
 class ProfileProvider extends ChangeNotifier {
   final ProfileRepository _profileRepository = ProfileRepository();
@@ -22,14 +21,15 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   // repo from discover data
-  final AlbumPhotoRepository _albumPhotoRepository = AlbumPhotoRepository();
+  final AlbumPhotoRepositoryImpl _albumPhotoRepository =
+      AlbumPhotoRepositoryImpl();
 
   var _photos = [];
   List leftImages = [];
   List rightImages = [];
   get photos => _photos;
   int start = 0;
-  Future<List<UserPhotosResponseEntity>> fetchPhotos(
+  Future<List<UserPhotosResponseModel>> fetchPhotos(
       int albumId, int limit, int start, bool addNew) async {
     try {
       var newPhotos;
@@ -48,7 +48,7 @@ class ProfileProvider extends ChangeNotifier {
         rightImages = _photos.sublist(midIndex);
       }
       notifyListeners();
-      return _photos as List<UserPhotosResponseEntity>;
+      return _photos as List<UserPhotosResponseModel>;
     } catch (e) {
       throw (e);
     }
