@@ -20,21 +20,6 @@ class UserPhotosResponseEntity {
     );
   }
 
-  // factory UserPhotosResponseEntity.fromDto(UserPhotosResponseEntity dto) =>
-  //     UserPhotosResponseEntity(
-  //       albumeId: dto.albumeId,
-  //       id: dto.id,
-  //       title: dto.title,
-  //       url: dto.url,
-  //       thumbnailUrl: dto.thumbnailUrl,
-  //     );
-  // UserPhotosResponseEntity toDto() => UserPhotosResponseEntity(
-  //       albumeId: albumeId,
-  //       id: id,
-  //       title: title,
-  //       url: url,
-  //       thumbnailUrl: thumbnailUrl,
-  //     );
 }
 
 class PhotosListResponseEntity {

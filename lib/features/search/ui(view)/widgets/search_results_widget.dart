@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../core/common/widgets/custom_button_widget.dart';
-import '../../../../core/common/widgets/discover_image_widget.dart';
+import '../../../../common/widgets/custom_button_widget.dart';
+import '../../../../common/widgets/discover_image_widget.dart';
 import '../../providers(view-model)/search_provider.dart';
 
 class SearchResult extends StatelessWidget {

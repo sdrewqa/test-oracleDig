@@ -1,4 +1,4 @@
-import 'package:app/core/common/widgets/discover_image_widget.dart';
+import 'package:app/common/widgets/discover_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers(view-model)/discover_provider.dart';

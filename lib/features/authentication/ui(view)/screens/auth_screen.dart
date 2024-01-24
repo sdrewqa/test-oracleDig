@@ -1,9 +1,9 @@
-import 'package:app/core/common/widgets/custom_button_widget.dart';
+import 'package:app/common/widgets/custom_button_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers(view-model)/auth_provider.dart';
 import '../widgets/auth_agreement_widget.dart';
-import '../../../../core/common/widgets/custom_textfield_widget.dart';
+import '../../../../common/widgets/custom_textfield_widget.dart';
 import 'package:app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 

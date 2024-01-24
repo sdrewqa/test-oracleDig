@@ -6,8 +6,8 @@ import '../widgets/profile_user_album_widget.dart';
 import '../widgets/profile_user_info_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
-
+  const ProfileScreen({super.key, required this.isMyProfile});
+  final bool isMyProfile;
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
@@ -34,7 +34,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
               child: Column(
-            children: [ProfielUserInfoWidget(), const ProfileUserAlbumWidget()],
+            children: [
+              ProfielUserInfoWidget(
+                isMyProfile: widget.isMyProfile,
+              ),
+               ProfileUserAlbumWidget()
+            ],
           )),
         ),
       ),

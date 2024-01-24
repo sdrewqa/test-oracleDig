@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-abstract class IProfileRepository {
+class dsa {}
+
+class IProfileRepository {
   /// Send email with activation code for user
-  User? getCurrentUser();
+  User? getCurrentUser() {}
 }

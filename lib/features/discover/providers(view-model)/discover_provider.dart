@@ -3,15 +3,18 @@ import 'package:app/features/discover/domain/entities/photos_response.dart';
 import 'package:app/features/discover/ui(view)/widgets/discover_overlay_image_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../data/models/photos_response.dart';
+
 class DiscoverProvider extends ChangeNotifier {
-  final AlbumPhotoRepository _albumPhotoRepository = AlbumPhotoRepository();
+  final AlbumPhotoRepositoryImpl _albumPhotoRepository =
+      AlbumPhotoRepositoryImpl();
   var _photos = [];
 
   get photos => _photos;
   var leftImages = [];
   var rightImages = [];
   int start = 0;
-  Future<List<UserPhotosResponseEntity>> fetchPhotos(
+  Future<List<UserPhotosResponseModel>> fetchPhotos(
       int albumId, int limit, int start) async {
     notifyListeners();
     try {
@@ -22,7 +25,7 @@ class DiscoverProvider extends ChangeNotifier {
       leftImages = _photos.sublist(0, midIndex);
       rightImages = _photos.sublist(midIndex);
       notifyListeners();
-      return _photos as List<UserPhotosResponseEntity>;
+      return _photos as List<UserPhotosResponseModel>;
     } catch (e) {
       // print('Error fetching photos: $e');
       throw (e);
